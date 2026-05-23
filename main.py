@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from app.routes import usuarios, grupos, membros, despesas
+from fastapi.middleware.cors import CORSMiddleware
+from app.routes import usuarios, grupos, membros, despesas, auth
 from app.database import engine, Base
 from app.routes import auth
 
@@ -10,6 +11,15 @@ app = FastAPI(
     title="Divide Aí API",
     description="Backend Inteligente para Divisão de Gastos em Grupo",
     version="1.0.0"
+)
+
+# Configuração do CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Permite todos os domínios (ideal para testes)
+    allow_credentials=True,
+    allow_methods=["*"], # Permite todos os métodos (GET, POST, etc.)
+    allow_headers=["*"], # Permite todos os cabeçalhos
 )
 
 # Puxa as rotas para dentro do Swagger
