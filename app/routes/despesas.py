@@ -6,7 +6,7 @@ from app.database import get_db
 from app import models, schemas
 from uuid import UUID
 from fastapi import HTTPException
-from app.security import obter_usuario_atual
+from app.deps import obter_usuario_atual
 
 router = APIRouter(prefix="/despesas", tags=["Despesas"])
 
