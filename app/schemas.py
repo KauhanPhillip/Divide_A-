@@ -11,6 +11,10 @@ class UsuarioCreate(BaseModel):
     firebase_uid: Optional[str] = None
     foto_url: Optional[str] = None
 
+class UsuarioLogin(BaseModel):
+    email: EmailStr
+    senha: str
+
 class UsuarioResponse(BaseModel):
     id: UUID  # Alterado de int para UUID
     nome: str
@@ -40,8 +44,8 @@ class MembroCreate(BaseModel):
     grupo_id: UUID
     usuario_id: UUID
 
-class MembroResponse(MembroCreate): # Aqui está o que faltava!
-    id: int # ou UUID, dependendo de como você definiu o id no model de Membro
+class MembroResponse(MembroCreate):
+    id: UUID  # Alterado de int para UUID para manter consistência
     
     class Config:
         from_attributes = True
