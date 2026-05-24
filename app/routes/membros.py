@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app import models, schemas
+from app.deps import obter_usuario_atual
 
 router = APIRouter(prefix="/membros", tags=["Membros"])
 
